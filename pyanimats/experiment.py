@@ -94,12 +94,14 @@ def _derive_params(d):
     num_nodes = d['num_sensors'] + d['num_hidden'] + d['num_motors']
     # Load initial genome if provided.
     if d['init_genome_path']:
-        path = os.path.join(d['init_genome_path'], 'lineages.pkl')
+        #path = os.path.join(d['init_genome_path'], 'lineages.pkl')
+        path = os.path.join(d['init_genome_path'], 'genome.pkl') #LA
         with open(path, 'rb') as f:
-            lineages = pickle.load(f)
+            #lineages = pickle.load(f)
+            init_genome = pickle.load(f) #LA
             # Use the genome of the best individual of the most recent
             # generation.
-            init_genome = lineages[0][0].genome
+            #init_genome = lineages[0][0].genome
     else:
         # Use the default genome.
         init_genome = ([d['default_init_genome_value']] *

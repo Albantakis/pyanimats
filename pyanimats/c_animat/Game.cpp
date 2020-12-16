@@ -243,13 +243,13 @@ vector<int> executeGame(vector<unsigned char> &allAnimatStates, vector<int>
                             break;
                         // Right motor on
                         case 1:
-                            // Move right
-                            agentPos = wrap(agentPos + 1, worldWidth);
+                            // Move left
+                            agentPos = wrap(agentPos - 1, worldWidth);
                             break;
                         // Left motor on
                         case 2:
-                            // Move left
-                            agentPos = wrap(agentPos - 1, worldWidth);
+                            // Move right
+                            agentPos = wrap(agentPos + 1, worldWidth);
                             break;
                     }
                 } // End world loop

@@ -6,9 +6,9 @@ simulation:
     # Simulation
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Number of generations to evolve.
-    ngen: 500000
+    ngen: 30000
     # Length of checkpoint interval in minutes.
-    checkpoint_interval: 10000
+    checkpoint_interval: 120
     # Generational interval at which to print evolution status to the screen. 
     # NOTE: printing to the screen is a slow operation; setting a short interval
     # can significantly impact performance if simulating a generation is fast.
@@ -52,7 +52,8 @@ experiment:
     # Size of the population.
     popsize: 100
     # Must be a path to the output file from a previous run, or `false`.
-    init_genome_path: false
+    #init_genome_path: false
+    init_genome_path: '/Users/albantakis/pydev/pyanimats/Task4'
     # Number of start codons to inject into the initial genome.
     # NOTE: this has no effect if loading from a checkpoint.
     init_start_codons: 0
@@ -65,9 +66,9 @@ experiment:
     #   - 'lt': Linear Threshold units
     gate: 'hmm'
     # The number of sensors in an animat.
-    num_sensors: 3
+    num_sensors: 2
     # The number of hidden units in an animat.
-    num_hidden: 5
+    num_hidden: 4
     # The number of motors in an animat.
     # NOTE: changing this has not been tested and probably won't work!
     num_motors: 2
@@ -80,7 +81,7 @@ experiment:
     # The width of the animats' environment.
     world_width: 16
     # The height of the animats' environment.
-    world_height: 36
+    world_height: 35
     # The task the animats will be presented width.
     # - Each item in the list specifies a hit multiplier and a block
     #   pattern. 
