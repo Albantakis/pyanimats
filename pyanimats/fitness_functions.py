@@ -13,6 +13,7 @@ from functools import wraps
 import numpy as np
 import pyphi
 from sklearn.metrics import mutual_info_score
+import networkx as nx
 
 from . import constants
 from .utils import unique_rows
@@ -36,6 +37,7 @@ LaTeX_NAMES = {
     'sd_wvn': 'State\ differentiation (world\ vs.\ noise)',
     'mat': 'Matching',
     'food': 'Food',
+    'no_lscc': 'Feedforward Fitness'
 }
 MULTIVALUED = ['mat']
 CHEAP = ['nat']
@@ -205,6 +207,11 @@ def phi_sum(phi_objects):
     sum of those attributes."""
     return sum(o.phi for o in phi_objects)
 
+def len_LSCC(ind):
+    G = nx.from_numpy_matrix(ind.cm, create_using=nx.DiGraph())
+    LSCC = max(nx.strongly_connected_components(G), key=len)
+    return len(LSCC)
+
 
 # Zero fitness
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,6 +234,20 @@ def nat(ind, scrambled=False):
     return ind.play_game(scrambled=scrambled).correct
 _register()(nat)
 
+
+# No Largest Strongly connected component
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def no_lscc(ind):
+    """No Largest Strongly Connected Component: Animats are evaluated based 
+    on their fitness (nat). But Feedback is punished with 0 fitness. That should
+    evolve feedforward systems.
+    """
+    if len_LSCC(ind) > 1:
+        return 0.
+    else:
+        return nat(ind)
+
+_register()(no_lscc)
 
 # Mutual information
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

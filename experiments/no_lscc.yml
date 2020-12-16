@@ -6,7 +6,7 @@ simulation:
     # Simulation
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Number of generations to evolve.
-    ngen: 30000
+    ngen: 10000
     # Length of checkpoint interval in minutes.
     checkpoint_interval: 120
     # Generational interval at which to print evolution status to the screen. 
@@ -34,7 +34,7 @@ experiment:
     rng_seed: 0
     # The fitness function(s) to evolve to. To specify multiple fitness
     # functions, separate them with a comma.
-    fitness_function: 'nat'
+    fitness_function: 'no_lscc'
     # The parameters, if any, for the fitness function.
     function_params:
     fitness_ranges:
@@ -53,7 +53,6 @@ experiment:
     popsize: 100
     # Must be a path to the output file from a previous run, or `false`.
     init_genome_path: false
-    #init_genome_path: '/Users/albantakis/pydev/pyanimats/Task4'
     # Number of start codons to inject into the initial genome.
     # NOTE: this has no effect if loading from a checkpoint.
     init_start_codons: 0
