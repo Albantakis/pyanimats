@@ -6,7 +6,7 @@ simulation:
     # Simulation
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Number of generations to evolve.
-    ngen: 10000
+    ngen: 30000
     # Length of checkpoint interval in minutes.
     checkpoint_interval: 120
     # Generational interval at which to print evolution status to the screen. 
@@ -67,7 +67,7 @@ experiment:
     # The number of sensors in an animat.
     num_sensors: 2
     # The number of hidden units in an animat.
-    num_hidden: 4
+    num_hidden: 6
     # The number of motors in an animat.
     # NOTE: changing this has not been tested and probably won't work!
     num_motors: 2

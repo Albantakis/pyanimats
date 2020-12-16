@@ -246,7 +246,6 @@ def no_lscc(ind):
         return 0.
     else:
         return nat(ind)
-
 _register()(no_lscc)
 
 # Mutual information
